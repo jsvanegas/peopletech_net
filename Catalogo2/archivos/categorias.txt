@@ -1,0 +1,4 @@
+﻿1;Celulares;fa-mobile;#fff2de;#ff7d31;
+2;Consolas;fa-gamepad;#fafffa;#38d626;
+3;Televisores;fa-television;#e9eeff;#224f6b;
+4;Computadores;fa-desktop;#ffe8e8;#d01212;

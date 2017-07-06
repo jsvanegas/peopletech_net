@@ -1,0 +1,6 @@
+﻿1;1;Samsung Galaxy S7;2700000;Samsung;Dispositivo movil de ultima generacion bla bla bla;http://s7d2.scene7.com/is/image/SamsungUS/600_006_Galaxy_S7_bk_Left_Angle?$product-details-jpg$;
+2;1;Samsung Galaxy S6;2000000;Samsung;Dispositivo movil de penultima generacion bla bla bla;http://www.samsung.com/common/next/promotions/galaxys6_edge/images/galaxy-s6_gallery_front_gold.png;
+3;1;iPhone 7 Plus;3700000;Apple;Dispositivo movil de ultima generacion bla bla bla;https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone7/jetblack/iphone7-jetblack-select-2016?wid=300&hei=300&fmt=png-alpha&qlt=95&.v=1472430076339;
+4;2;Nintendo Switch;2000000;Nintendo;Centro de entretenimiento bla bla bla bla bla;http://www.nintendo.com/switch/etRgxnAu0zRX4bmWnt9K628wG7YQUI6t/images/switch/cta/switch-angle.png;
+5;2;XBOX ONE;2000000;Microsoft;Centro de entretenimiento bla bla bla bla bla;https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjI1rTn7vDUAhVBPiYKHSKoCvsQjRwIBw&url=http%3A%2F%2Fwww.xbox.com%2Fes-AR%2Fxbox-one&psig=AFQjCNEXh1oRhAB056niOyuYU2r7m2Kcjw&ust=1499300245847871;
+6;2;Play Station 4;2000000;SONY;Centro de entretenimiento bla bla bla bla bla;https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$TwoColumn_Image$;
