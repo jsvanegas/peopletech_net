@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTOR">
+          <Key>
+            <PropertyRef Name="ID_AUTOR" />
+          </Key>
+          <Property Name="ID_AUTOR" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FOTO" Type="nvarchar2" MaxLength="250" />
+          <Property Name="TITULO" Type="nvarchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NOTICIA">
+          <Key>
+            <PropertyRef Name="ID_NOTICIA" />
+          </Key>
+          <Property Name="ID_NOTICIA" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="TITULO" Type="nvarchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FOTO" Type="varchar2" MaxLength="250" />
+          <Property Name="CONTENIDO" Type="nvarchar2" MaxLength="1000" />
+          <Property Name="FECHA" Type="timestamp" Precision="6" />
+          <Property Name="ID_TEMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ID_AUTOR" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEMA">
+          <Key>
+            <PropertyRef Name="ID_TEMA" />
+          </Key>
+          <Property Name="ID_TEMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="TEMA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ICONO" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <Association Name="NOTICIA_AUTOR_FK">
+          <End Role="AUTOR" Type="Self.AUTOR" Multiplicity="1" />
+          <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTOR">
+              <PropertyRef Name="ID_AUTOR" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="ID_AUTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NOTICIA_TEMA_FK">
+          <End Role="TEMA" Type="Self.TEMA" Multiplicity="1" />
+          <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMA">
+              <PropertyRef Name="ID_TEMA" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="ID_TEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AUTOR" EntityType="Self.AUTOR" Schema="BDPEOPLETECH" store:Type="Tables" />
+          <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" Schema="BDPEOPLETECH" store:Type="Tables" />
+          <EntitySet Name="TEMA" EntityType="Self.TEMA" Schema="BDPEOPLETECH" store:Type="Tables" />
+          <AssociationSet Name="NOTICIA_AUTOR_FK" Association="Self.NOTICIA_AUTOR_FK">
+            <End Role="AUTOR" EntitySet="AUTOR" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+          <AssociationSet Name="NOTICIA_TEMA_FK" Association="Self.NOTICIA_TEMA_FK">
+            <End Role="TEMA" EntitySet="TEMA" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTOR">
+          <Key>
+            <PropertyRef Name="ID_AUTOR" />
+          </Key>
+          <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NOTICIA" Relationship="Self.NOTICIA_AUTOR_FK" FromRole="AUTOR" ToRole="NOTICIA" />
+        </EntityType>
+        <EntityType Name="NOTICIA">
+          <Key>
+            <PropertyRef Name="ID_NOTICIA" />
+          </Key>
+          <Property Name="ID_NOTICIA" Type="Int32" Nullable="false" />
+          <Property Name="TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENIDO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA" Type="DateTime" Precision="6" />
+          <Property Name="ID_TEMA" Type="Int32" Nullable="false" />
+          <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AUTOR" Relationship="Self.NOTICIA_AUTOR_FK" FromRole="NOTICIA" ToRole="AUTOR" />
+          <NavigationProperty Name="TEMA" Relationship="Self.NOTICIA_TEMA_FK" FromRole="NOTICIA" ToRole="TEMA" />
+        </EntityType>
+        <EntityType Name="TEMA">
+          <Key>
+            <PropertyRef Name="ID_TEMA" />
+          </Key>
+          <Property Name="ID_TEMA" Type="Int32" Nullable="false" />
+          <Property Name="TEMA1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ICONO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NOTICIA" Relationship="Self.NOTICIA_TEMA_FK" FromRole="TEMA" ToRole="NOTICIA" />
+        </EntityType>
+        <Association Name="NOTICIA_AUTOR_FK">
+          <End Role="AUTOR" Type="Self.AUTOR" Multiplicity="1" />
+          <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTOR">
+              <PropertyRef Name="ID_AUTOR" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="ID_AUTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NOTICIA_TEMA_FK">
+          <End Role="TEMA" Type="Self.TEMA" Multiplicity="1" />
+          <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMA">
+              <PropertyRef Name="ID_TEMA" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="ID_TEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PeriodicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTOR" EntityType="Self.AUTOR" />
+          <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" />
+          <EntitySet Name="TEMA" EntityType="Self.TEMA" />
+          <AssociationSet Name="NOTICIA_AUTOR_FK" Association="Self.NOTICIA_AUTOR_FK">
+            <End Role="AUTOR" EntitySet="AUTOR" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+          <AssociationSet Name="NOTICIA_TEMA_FK" Association="Self.NOTICIA_TEMA_FK">
+            <End Role="TEMA" EntitySet="TEMA" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PeriodicoEntities">
+          <EntitySetMapping Name="AUTOR">
+            <EntityTypeMapping TypeName="Model.AUTOR">
+              <MappingFragment StoreEntitySet="AUTOR">
+                <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTICIA">
+            <EntityTypeMapping TypeName="Model.NOTICIA">
+              <MappingFragment StoreEntitySet="NOTICIA">
+                <ScalarProperty Name="ID_NOTICIA" ColumnName="ID_NOTICIA" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ID_TEMA" ColumnName="ID_TEMA" />
+                <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMA">
+            <EntityTypeMapping TypeName="Model.TEMA">
+              <MappingFragment StoreEntitySet="TEMA">
+                <ScalarProperty Name="ID_TEMA" ColumnName="ID_TEMA" />
+                <ScalarProperty Name="TEMA1" ColumnName="TEMA" />
+                <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

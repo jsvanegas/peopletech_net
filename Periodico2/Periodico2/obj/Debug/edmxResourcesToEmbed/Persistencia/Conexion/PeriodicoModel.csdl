@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTOR">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NOTICIA" Relationship="Self.NOTICIA_AUTOR_FK" FromRole="AUTOR" ToRole="NOTICIA" />
+  </EntityType>
+  <EntityType Name="NOTICIA">
+    <Key>
+      <PropertyRef Name="ID_NOTICIA" />
+    </Key>
+    <Property Name="ID_NOTICIA" Type="Int32" Nullable="false" />
+    <Property Name="TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CONTENIDO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA" Type="DateTime" Precision="6" />
+    <Property Name="ID_TEMA" Type="Int32" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AUTOR" Relationship="Self.NOTICIA_AUTOR_FK" FromRole="NOTICIA" ToRole="AUTOR" />
+    <NavigationProperty Name="TEMA" Relationship="Self.NOTICIA_TEMA_FK" FromRole="NOTICIA" ToRole="TEMA" />
+  </EntityType>
+  <EntityType Name="TEMA">
+    <Key>
+      <PropertyRef Name="ID_TEMA" />
+    </Key>
+    <Property Name="ID_TEMA" Type="Int32" Nullable="false" />
+    <Property Name="TEMA1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ICONO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NOTICIA" Relationship="Self.NOTICIA_TEMA_FK" FromRole="TEMA" ToRole="NOTICIA" />
+  </EntityType>
+  <Association Name="NOTICIA_AUTOR_FK">
+    <End Role="AUTOR" Type="Self.AUTOR" Multiplicity="1" />
+    <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTOR">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="NOTICIA">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTICIA_TEMA_FK">
+    <End Role="TEMA" Type="Self.TEMA" Multiplicity="1" />
+    <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMA">
+        <PropertyRef Name="ID_TEMA" />
+      </Principal>
+      <Dependent Role="NOTICIA">
+        <PropertyRef Name="ID_TEMA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PeriodicoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTOR" EntityType="Self.AUTOR" />
+    <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" />
+    <EntitySet Name="TEMA" EntityType="Self.TEMA" />
+    <AssociationSet Name="NOTICIA_AUTOR_FK" Association="Self.NOTICIA_AUTOR_FK">
+      <End Role="AUTOR" EntitySet="AUTOR" />
+      <End Role="NOTICIA" EntitySet="NOTICIA" />
+    </AssociationSet>
+    <AssociationSet Name="NOTICIA_TEMA_FK" Association="Self.NOTICIA_TEMA_FK">
+      <End Role="TEMA" EntitySet="TEMA" />
+      <End Role="NOTICIA" EntitySet="NOTICIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

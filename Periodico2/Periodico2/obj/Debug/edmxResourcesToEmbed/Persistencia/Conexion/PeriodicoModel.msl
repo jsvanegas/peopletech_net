@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PeriodicoEntities">
+    <EntitySetMapping Name="AUTOR">
+      <EntityTypeMapping TypeName="Model.AUTOR">
+        <MappingFragment StoreEntitySet="AUTOR">
+          <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTICIA">
+      <EntityTypeMapping TypeName="Model.NOTICIA">
+        <MappingFragment StoreEntitySet="NOTICIA">
+          <ScalarProperty Name="ID_NOTICIA" ColumnName="ID_NOTICIA" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="ID_TEMA" ColumnName="ID_TEMA" />
+          <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEMA">
+      <EntityTypeMapping TypeName="Model.TEMA">
+        <MappingFragment StoreEntitySet="TEMA">
+          <ScalarProperty Name="ID_TEMA" ColumnName="ID_TEMA" />
+          <ScalarProperty Name="TEMA1" ColumnName="TEMA" />
+          <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

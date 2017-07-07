@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AUTOR">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="FOTO" Type="nvarchar2" MaxLength="250" />
+    <Property Name="TITULO" Type="nvarchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NOTICIA">
+    <Key>
+      <PropertyRef Name="ID_NOTICIA" />
+    </Key>
+    <Property Name="ID_NOTICIA" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TITULO" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="FOTO" Type="varchar2" MaxLength="250" />
+    <Property Name="CONTENIDO" Type="nvarchar2" MaxLength="1000" />
+    <Property Name="FECHA" Type="timestamp" Precision="6" />
+    <Property Name="ID_TEMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TEMA">
+    <Key>
+      <PropertyRef Name="ID_TEMA" />
+    </Key>
+    <Property Name="ID_TEMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TEMA" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="ICONO" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <Association Name="NOTICIA_AUTOR_FK">
+    <End Role="AUTOR" Type="Self.AUTOR" Multiplicity="1" />
+    <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTOR">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="NOTICIA">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTICIA_TEMA_FK">
+    <End Role="TEMA" Type="Self.TEMA" Multiplicity="1" />
+    <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMA">
+        <PropertyRef Name="ID_TEMA" />
+      </Principal>
+      <Dependent Role="NOTICIA">
+        <PropertyRef Name="ID_TEMA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AUTOR" EntityType="Self.AUTOR" Schema="BDPEOPLETECH" store:Type="Tables" />
+    <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" Schema="BDPEOPLETECH" store:Type="Tables" />
+    <EntitySet Name="TEMA" EntityType="Self.TEMA" Schema="BDPEOPLETECH" store:Type="Tables" />
+    <AssociationSet Name="NOTICIA_AUTOR_FK" Association="Self.NOTICIA_AUTOR_FK">
+      <End Role="AUTOR" EntitySet="AUTOR" />
+      <End Role="NOTICIA" EntitySet="NOTICIA" />
+    </AssociationSet>
+    <AssociationSet Name="NOTICIA_TEMA_FK" Association="Self.NOTICIA_TEMA_FK">
+      <End Role="TEMA" EntitySet="TEMA" />
+      <End Role="NOTICIA" EntitySet="NOTICIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
