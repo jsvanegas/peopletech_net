@@ -1,4 +1,5 @@
 ﻿using Periodico2.Persistencia.Conexion;
+using Periodico2.Persistencia.VO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,12 @@ using System.Web;
 
 namespace Periodico2.Persistencia.DAO
 {
-    public class TemaDAO : IDAO<TEMA>
+    public class TemaDAO : GenericoDAO, IDAO<TEMA, TemaVO>
     {
-        private PeriodicoEntities cnn;
-
-        public TemaDAO(PeriodicoEntities cnn) {
-            this.cnn = cnn;
+        public TemaDAO(PeriodicoEntities cnn) : base(cnn)
+        {
         }
-        
+
         public int Actualizar(TEMA entidad)
         {
             var temaAnterior = this.ConsultarPorId(entidad.ID_TEMA);
@@ -22,14 +21,23 @@ namespace Periodico2.Persistencia.DAO
             return cnn.SaveChanges();
         }
 
-        public TEMA ConsultarPorId(int idEntidad)
+        public TemaVO ConsultarPorId(int idEntidad)
         {
-            return cnn.TEMA.SingleOrDefault(t => t.ID_TEMA.Equals(idEntidad));
+            var tema = cnn.TEMA.SingleOrDefault(t => t.ID_TEMA.Equals(idEntidad));
+            return new TemaVO() {
+                ID_TEMA = tema.ID_TEMA,
+                TEMA1 = tema.TEMA1,
+                ICONO = tema.ICONO
+            };
         }
 
-        public IEnumerable<TEMA> ConsultarTodos()
+        public IEnumerable<TemaVO> ConsultarTodos()
         {
-            return cnn.TEMA.ToList();
+            return cnn.TEMA.Select(t=>new TemaVO {
+                ID_TEMA = t.ID_TEMA,
+                TEMA1 = t.TEMA1,
+                ICONO = t.ICONO
+            });
         }
 
         public int Eliminar(int idEntidad)

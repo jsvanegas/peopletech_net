@@ -13,7 +13,6 @@ namespace Periodico2.Persistencia.Conexion
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
-    [DataContract]
     public partial class TEMA
     {
         public TEMA()
@@ -21,11 +20,8 @@ namespace Periodico2.Persistencia.Conexion
             this.NOTICIA = new HashSet<NOTICIA>();
         }
     
-        [DataMember]
         public int ID_TEMA { get; set; }
-        [DataMember]
         public string TEMA1 { get; set; }
-        [DataMember]
         public string ICONO { get; set; }
     
         public virtual ICollection<NOTICIA> NOTICIA { get; set; }

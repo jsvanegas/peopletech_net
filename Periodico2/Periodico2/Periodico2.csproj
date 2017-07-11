@@ -158,11 +158,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Controllers\NoticiaController.cs" />
+    <Compile Include="Negocio\Delegados\NoticiaDelegado.cs" />
     <Compile Include="Negocio\General\Mensajes.cs" />
     <Compile Include="Negocio\General\PeriodicoException.cs" />
     <Compile Include="Negocio\Delegados\IDelegadoDatos.cs" />
     <Compile Include="Negocio\Delegados\TemaDelegado.cs" />
-    <Compile Include="Negocio\TemaController.cs" />
+    <Compile Include="Negocio\Controllers\TemaController.cs" />
+    <Compile Include="Negocio\General\Respuesta.cs" />
+    <Compile Include="Negocio\Util\Validacion.cs" />
     <Compile Include="Persistencia\Conexion\AUTOR.cs">
       <DependentUpon>PeriodicoModel.tt</DependentUpon>
     </Compile>
@@ -187,14 +191,15 @@
     <Compile Include="Persistencia\Conexion\TEMA.cs">
       <DependentUpon>PeriodicoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Persistencia\DAO\GenericoDAO.cs" />
     <Compile Include="Persistencia\DAO\IDAO.cs" />
+    <Compile Include="Persistencia\DAO\NoticiaDAO.cs" />
     <Compile Include="Persistencia\DAO\TemaDAO.cs" />
+    <Compile Include="Persistencia\VO\TemaVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Negocio\Util\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

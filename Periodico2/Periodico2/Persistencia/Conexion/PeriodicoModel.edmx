@@ -59,9 +59,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="AUTOR" EntityType="Self.AUTOR" Schema="BDPEOPLETECH" store:Type="Tables" />
-          <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" Schema="BDPEOPLETECH" store:Type="Tables" />
-          <EntitySet Name="TEMA" EntityType="Self.TEMA" Schema="BDPEOPLETECH" store:Type="Tables" />
+          <EntitySet Name="AUTOR" EntityType="Self.AUTOR" Schema="USER03" store:Type="Tables" />
+          <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" Schema="USER03" store:Type="Tables" />
+          <EntitySet Name="TEMA" EntityType="Self.TEMA" Schema="USER03" store:Type="Tables" />
           <AssociationSet Name="NOTICIA_AUTOR_FK" Association="Self.NOTICIA_AUTOR_FK">
             <End Role="AUTOR" EntitySet="AUTOR" />
             <End Role="NOTICIA" EntitySet="NOTICIA" />
