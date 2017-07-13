@@ -33,11 +33,37 @@
     }
 
     function guardarTema() {
+
+        if (!validarTema()) {
+            return;
+        }
+
         var data = {
             tema:$('#nuevo_tema').find('#txtTema').val(),
             icono: $('#nuevo_tema .iconos-temas a.btn-primary i').attr('class')
         };
         __app.ajax('/temas/registrar', data, onGuardarTemaCompleto);
+    }
+
+    function validarTema() {
+        var nuevoTema = $('#nuevo_tema');
+        var txtTema = nuevoTema.find('#txtTema');
+        if (txtTema.val().trim() === '') {
+            txtTema.parent().addClass('has-error').removeClass('has-success');
+            txtTema.select();
+            return false;
+        }
+
+        txtTema.parent().addClass('has-success').removeClass('has-error');
+
+
+        if (nuevoTema.find('div.iconos-temas a.btn-primary').length === 0) {
+            nuevoTema.find('div.iconos-temas a.btn-default:first').focus();
+            return false;
+        }
+
+
+        return true;
     }
 
     function onGuardarTemaCompleto(data) {
