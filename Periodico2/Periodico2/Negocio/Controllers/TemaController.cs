@@ -56,7 +56,7 @@ namespace Periodico2.Negocio.Controllers
 
         private TEMA obtenerEntidad(FormDataCollection data)
         {
-            if (Validacion.ValidarSrtrings(data["tema"], data["icono"]))
+            if (!Validacion.ValidarSrtrings(data["tema"], data["icono"]))
             {
                 throw new PeriodicoException("La informacion del tema esta incompleta", null);
             }

@@ -118,6 +118,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\metisMenu.min.css" />
+    <Content Include="css\sb-admin-2.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="js\app\app.js" />
+    <Content Include="js\app\dom.js" />
+    <Content Include="js\lib\metisMenu.min.js" />
+    <Content Include="js\lib\sb-admin-2.min.js" />
+    <Content Include="js\lib\bootstrap.min.js" />
+    <Content Include="js\lib\handlebars-v4.0.10.js" />
+    <Content Include="js\lib\jquery-3.2.1.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -129,6 +142,15 @@
     <Content Include="Persistencia\Conexion\PeriodicoModel.edmx.diagram">
       <DependentUpon>PeriodicoModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +173,8 @@
     </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="vistas\temas\temas.html" />
+    <Content Include="vistas\temas\temas.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

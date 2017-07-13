@@ -81,6 +81,5 @@ C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\bin\Newtonsoft.Jso
 C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\bin\System.Net.Http.Formatting.xml
 C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\bin\System.Web.Http.xml
 C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\bin\System.Web.Http.WebHost.xml
-C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\obj\Debug\Periodico2.csprojResolveAssemblyReference.cache
 C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\obj\Debug\Periodico2.dll
 C:\Users\jhon1\Documents\peopletech_net\Periodico2\Periodico2\obj\Debug\Periodico2.pdb
